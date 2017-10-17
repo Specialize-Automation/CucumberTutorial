@@ -1,0 +1,193 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>demo</groupId>
+  <artifactId>mavenProject</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>mavenProject</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+  <!-- ************* Selenium Webdriver Version 2.53.0 used in Eclipse ***************** -->
+  <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>2.53.0</version>
+  </dependency>  
+  <!-- *************  Java Version Standard Edition 8 and Path Declared **************** -->
+  <dependency>
+   		<groupId>com.sun</groupId>
+   		<artifactId>tools</artifactId>
+   		<version>1.8</version>
+   		<scope>system</scope>
+   		<systemPath>C:\Program Files\Java\jdk1.8.0_66\lib\tools.jar</systemPath>
+ </dependency>
+ <!-- ***********  https://mvnrepository.com/artifact/info.cukes/cucumber-core  ******** -->
+ <!-- ************** Adding cucumber related all dependencies in below ***************** -->	
+		<dependency>
+    		<groupId>info.cukes</groupId>
+    		<artifactId>cucumber-core</artifactId>
+   			<version>1.2.5</version>
+		</dependency> 
+  		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>1.2.5</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-jvm</artifactId>
+			<version>1.2.5</version>
+			<type>pom</type>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-junit -->
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>1.2.5</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-jvm-deps</artifactId>
+			<version>1.0.5</version>
+		</dependency>
+<!-- ****************************************************************************************** -->
+<!--  Cucumber Gherkin SYNTAX -->
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>gherkin</artifactId>
+			<version>2.12.2</version>
+		</dependency>
+<!-- ****************************************************************************************** -->
+
+<!-- Cobertura is a free Java tool,calculates the % of code accessed by tests,
+used to identify which parts of your Java program are lacking test coverage,based on jcoverage  -->
+		<dependency>
+			<groupId>net.sourceforge.cobertura</groupId>
+			<artifactId>cobertura</artifactId>
+			<version>2.1.1</version>
+		</dependency>
+		
+<!-- *********  https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting ********-->
+<!-- *********  http://search.maven.org/#search%7Cga%7C1%7Ccucumber-extentsreport **************-->
+<!-- 1st is for Cucumber Extent advance Reporting -->
+ 		<dependency>
+   			 <groupId>com.vimalselvam</groupId>
+    		 <artifactId>cucumber-extentsreport</artifactId>
+    		 <version>2.0.2</version>
+		</dependency>
+		<dependency>
+    		<groupId>com.relevantcodes</groupId>
+    		<artifactId>extentreports</artifactId>
+    		<version>2.41.2</version>
+		</dependency>
+		<dependency>
+    		<groupId>com.aventstack</groupId>
+   			<artifactId>extentreports</artifactId>
+    		<version>3.0.3</version>
+		</dependency>
+<!-- 2nd is for Cucumber pretty and Json format Reporting -->
+		<dependency>
+   			 <groupId>net.masterthought</groupId>
+    		 <artifactId>cucumber-reporting</artifactId>
+   			 <version>3.5.1</version>
+		</dependency>
+<!-- ***************************************************************************************** -->	
+<!--  JAVA based Mocking Framwork similar like Junit but use mock interface fot Unit Testing   -->	
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>2.0.2-beta</version>
+		</dependency>
+<!-- ***************** Junit Version 4.12 added as Unit test framework ************* -->
+       <dependency>
+     		<groupId>junit</groupId>
+    		<artifactId>junit</artifactId>
+      		<version>4.12</version>
+      		<scope>test</scope>
+       </dependency>
+       
+<!-- *********************cucumber TestNG Runner Dependencies*************************-->     
+<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-testng -->
+<dependency>
+    <groupId>info.cukes</groupId>
+    <artifactId>cucumber-testng</artifactId>
+    <version>1.2.5</version>
+</dependency>
+<!-- ************************* Adding TestNG jar files for Runner class **************-->
+<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+<dependency>
+    <groupId>org.testng</groupId>
+    <artifactId>testng</artifactId>
+    <version>6.9.10</version>
+    <scope>test</scope>
+</dependency>
+  </dependencies>
+  <!-- Adding maven comiler plugin and surefire plugin in Build is  manadatory  -->
+  <!--****The Compiler Plugin is used to compile the sources of your project****-->
+  <!-- Enable the forkcount only if you want to run parallel , will trigger #n no of JVM -->
+  <build>
+   <plugins>
+   <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.0</version>
+        <configuration>
+            <fork>true</fork>
+      		<executable>C:\Program Files\Java\jdk1.8.0_66\bin\javac.exe</executable>
+        	<source>1.8</source>
+        	<target>1.8</target>
+        </configuration>
+      </plugin>
+<!-- The Surefire Plugin is used during the test phase of the build lifecycle to execute 
+the unit tests of an application.It generates reports in two different file formats: 
+1.XML files
+2.Plain Text files -->
+<plugin>
+   		<groupId>org.apache.maven.plugins</groupId>
+    	<artifactId>maven-surefire-plugin</artifactId>
+    	<version>2.18.1</version>
+    		<configuration>
+    			<includes>
+ <!-- 		    <include>**/*Runner.java</include>    -->
+ <!--  	   		<exclude>**/*Demo.java</exclude>	  -->
+    	   		<include>**/*RunnerMMT.java</include>
+    			</includes>
+    		</configuration>
+  </plugin>
+  <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>2.20</version>
+      </plugin>
+  </plugins>
+  </build>
+ <!--  ******************  Build Plugin added  **************** -->
+</project>
+
+
+
+<!-- If you wanna run your Features/Runners parallelly then Use this below configuration
+ inside maven surefire plugin
+ <plugin>
+   		<groupId>org.apache.maven.plugins</groupId>
+    	<artifactId>maven-surefire-plugin</artifactId>
+    	<version>2.18.1</version>	
+    	 <configuration>
+    	     <parallel>classes</parallel>
+    		 <forkMode>perthread</forkMode>
+    		 <threadCount>3</threadCount>        
+		 	 <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+    	 	 <includes>
+    			<include>**/*Runner.java</include>
+    	 	 </includes>	    	
+    	</configuration>
+  </plugin> -->
